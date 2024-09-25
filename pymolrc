@@ -1,0 +1,12 @@
+set cartoon_oval_length, 0.8
+set antialias = 1
+bg white
+set ray_shadow,0
+
+
+light 0 on
+light 1 on
+light 2 off
+light 3 off
+display nearclip set 0
+display rendermode GLSL
