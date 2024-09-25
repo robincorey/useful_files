@@ -1,0 +1,93 @@
+light 0 on
+light 1 on
+light 2 off
+light 3 off
+display nearclip set 0
+display rendermode GLSL
+color Name D green
+color Resname GLY yellow
+color Resname ARG blue
+color Resname LYS blue
+color Resname THR green
+color Resname PRO yellow
+color Resname SER green
+color Resname PHE orange
+color Resname TYR orange
+color Resname TRP orange
+color Resname HIS cyan
+color Resname LEU yellow
+color Resname ILE yellow
+color Resname VAL yellow
+color Resname MET yellow
+color Resname ALA yellow
+color Resname CYS yellow
+color Resname ASP red
+color Resname GLU red
+color Resname ASN green
+color Resname GLN green
+
+display projection orthographic
+display depthcue off
+color Labels Bonds black
+color Labels Atoms black
+
+#mol default style QuickSurf
+#mol default selection name BB "SC.*"
+mol material Diffuse
+#mol default material {AOChalky}
+mol modmaterial 0 0 AOChalky
+mol modstyle 0 0 NewCartoon 0.220000 10.000000 4.100000 0
+
+stage location off
+axes location off
+
+menu main     on
+menu graphics on
+
+## FOR VMDLITE ##
+#menu main off
+#menu graphics off
+#package require vmdlite
+#vmdlite
+
+# Colors
+color Display Background white
+color Display FPS black
+setcolors vmd_0.75 #Drop the saturation of the default colors
+setcolorscale jet   #Set the colorscale to Matlab's jet
+color Name C green
+color Type C green
+color change rgb 0 0.1 0.2 0.7 ;# blue
+color change rgb 1 0.7 0.2 0.1 ;# red
+color change rgb 3 0.7 0.4 0.0 ;# orange
+color change rgb 4 0.8 0.7 0.1 ;# yellow
+color change rgb 7 0.1 0.7 0.2 ;# green
+
+# define a new, very transparent material 'Glass'
+material add Glass
+material change ambient   Glass 0.00
+material change specular  Glass 0.50
+material change diffuse   Glass 0.65
+material change shininess Glass 0.53
+material change opacity   Glass 0.15
+# define a new, semitransparent strictly white material 'Slice', for making protein crossection pictures
+material add Slice
+material change ambient   Slice 1.00
+material change specular  Slice 0.00
+material change diffuse   Slice 1.00
+material change shininess Slice 0.00
+material change opacity   Slice 0.75
+# define a new, non-shiny white material 'Gypsum', for making BW protein pictures
+material add Gypsum
+material change ambient Gypsum 0.000000
+material change specular Gypsum 1.000000
+material change diffuse Gypsum 1.000000
+material change shininess Gypsum 0.000000
+material change opacity Gypsum 1.000000
+# define a new, non-shiny gray material 'Smog', for making BW protein crossections
+material add Smog
+material change ambient Smog 0.400000
+material change specular Smog 0.000000
+material change diffuse Smog 0.000000
+material change shininess Smog 0.000000
+material change opacity Smog 1.000000
