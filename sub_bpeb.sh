@@ -14,6 +14,7 @@
 cd $SLURM_SUBMIT_DIR
 
 module purge
+module load openmpi/5.0.3
 module load gromacs/2024.2-netlib-lapack
 
 tpr=md_${SLURM_ARRAY_TASK_ID}
