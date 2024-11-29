@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:2          # GPU
 #SBATCH --ntasks-per-node=2    
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=4    # if you're bored you can try changing this to see if it helps. Can be as high as 16 probably
 #SBATCH --partition gpu      # GPU
 #SBATCH --time=48:00:00      # this can be changed
 #SBATCH --account=phph030024
