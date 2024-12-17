@@ -6,7 +6,7 @@
 #SBATCH --time=48:00:00
 #SBATCH --array=1-3
 
-#SBATCH --account=e280-Stansfeld
+#SBATCH --account=e280-Corey
 #SBATCH --partition=standard
 #SBATCH --qos=long
 
