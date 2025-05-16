@@ -10,7 +10,7 @@
 #SBATCH --account=phph030024
 #SBATCH --output=out
 #SBATCH --error=err
-#SBATCH --array=1-1          # changed this for more reps
+#SBATCH --array=1-1          # change this for more reps
 
 cd "${SLURM_SUBMIT_DIR}"
 
@@ -18,6 +18,6 @@ module purge
 module load openmpi/5.0.3
 module load gromacs/2024.2-netlib-lapack
 
-tpr=md_5
+tpr=md_${SLURM_ARRAY_TASK_ID}
 
 gmx_mpi mdrun -deffnm $tpr -s $tpr -nsteps 500000000  &> run-gromacs.out
