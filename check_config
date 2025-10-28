@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# check RDSF loaded
+if [ -d "/media/RDSF/Oxford/" ]; then
+        echo "
+        RDSF mounted correctly
+        "
+else
+        echo "
+        ########################
+        RDSF needs to be mounted
+        ########################
+        
+        sudo mount -t cifs -o username=birac,workgroup=UOB //rdsfcifs.acrc.bris.ac.uk/Modelling_GPCRs /media/RDSF/
+        
+        "
+fi
+
+# check GPU ok
+if nvidia-smi | grep -q "Driver Version"; then
+        echo "
+        GPU working correctly
+        "
+else
+        echo "
+        #######################
+        GPU needs to be checked
+        #######################
+        
+        "
+fi
+
+df=`df -h | grep ubuntu | awk '{print $4}'` ; echo "" ; echo "        free space = $df" ; echo ""
