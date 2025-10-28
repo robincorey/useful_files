@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#SBATCH --job-name=gmxinstall
+#SBATCH --output=gmx.out
+#SBATCH --error=gmx.err
+#SBATCH --ntasks=1
+#SBATCH --time=02:00:00
+
+module purge
+module load gcc-native/12.3
+
+echo -e "\n=== Compiler versions ==="
+gcc --version | head -1
+
+#
+cd /home/b35bp/${USER}
+wget https://ftp.gromacs.org/gromacs/gromacs-2024.4.tar.gz
+tar -xvf gromacs-2024.4.tar.gz
+cd gromacs-2024.4
+
+rm -rf build
+mkdir -p build
+cd build
+
+#
+CC=gcc CXX=g++ cmake .. \
+  -DGMX_BUILD_OWN_FFTW=ON \
+  -DREGRESSIONTEST_DOWNLOAD=ON \
+  -DCMAKE_INSTALL_PREFIX=/home/b35bp/${USER}/apps/gromacs-2024.4 \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DGMX_SIMD=ARM_SVE \
+  -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON
+
+#
+make -j 8
+
+#
+make check
+
+#
+make install
+
+#
+echo "Installation directory: /home/b35bp/${USER}/apps/gromacs-2024.4"
