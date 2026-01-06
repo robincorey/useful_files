@@ -9,8 +9,8 @@ y = np.loadtxt("rmsd_1.xvg", usecols=1, comments=['#','@'], unpack=True)
 
 # plot - you can change loads here
 plt.plot(x,y, color='green', linewidth=2)
-plt.xlabel('Time (ns)', fontsize=90)
-plt.ylabel('RMSD (nm)')
+plt.xlabel('Time (ns)', fontsize=15)
+plt.ylabel('RMSD (nm)', fontsize=15)
 plt.title('whatver you want')
 
 # save
